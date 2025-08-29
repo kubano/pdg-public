@@ -21,10 +21,13 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-blue-400 mb-4 sm:text-3xl">
+              Product Development Group
+            </h1>
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
               Building the Future of{' '}
               <span className="text-blue-400">Cloud Applications</span>
-            </h1>
+            </h2>
             <p className="mt-6 text-lg leading-8 text-gray-200">
               We craft exceptional enterprise solutions through modern Cloud Technologies, 
               Azure services, and cutting-edge development practices that scale with your business.
@@ -77,8 +80,8 @@ export default function Home() {
 
       {/* About Section */}
       <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-9xl px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               About Product Development Group
             </h2>
@@ -88,6 +91,78 @@ export default function Home() {
               Microsoft technologies and Azure Cloud, we partner with businesses to deliver 
               robust, scalable, and secure digital platforms tailored to their unique needs.
             </p>
+            
+            {/* Extended tech-focused content */}
+            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6">
+                <div className="text-2xl font-bold text-blue-600 mb-2">⚡</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Lightning-Fast Development</h3>
+                <p className="text-sm text-gray-600">
+                  We accelerate your time-to-market with modern DevOps practices, CI/CD pipelines, 
+                  and infrastructure-as-code deployments that scale automatically.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6">
+                <div className="text-2xl font-bold text-green-600 mb-2">🚀</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Cloud-Native Architecture</h3>
+                <p className="text-sm text-gray-600">
+                  Built for the cloud from day one. Microservices, containerization, serverless functions, 
+                  and auto-scaling ensure your applications perform under any load.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6">
+                <div className="text-2xl font-bold text-purple-600 mb-2">🔒</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Enterprise Security</h3>
+                <p className="text-sm text-gray-600">
+                  Zero-trust architecture, OAuth 2.0, Azure AD integration, and compliance-ready 
+                  solutions that protect your data and meet regulatory requirements.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-12 bg-gray-900 rounded-2xl p-8 text-left">
+              <h3 className="text-xl font-bold text-white mb-4">Our Tech Stack Expertise</h3>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                <div>
+                  <div className="text-blue-400 font-semibold mb-2">Backend</div>
+                  <ul className="text-gray-300 space-y-1">
+                    <li>.NET 8+ / C#</li>
+                    <li>ASP.NET Core</li>
+                    <li>Entity Framework</li>
+                    <li>Azure Functions</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-green-400 font-semibold mb-2">Frontend</div>
+                  <ul className="text-gray-300 space-y-1">
+                    <li>React / Next.js</li>
+                    <li>TypeScript</li>
+                    <li>Tailwind CSS</li>
+                    <li>Blazor</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-purple-400 font-semibold mb-2">Cloud & DevOps</div>
+                  <ul className="text-gray-300 space-y-1">
+                    <li>Azure Cloud</li>
+                    <li>Docker/Kubernetes</li>
+                    <li>GitHub Actions</li>
+                    <li>Terraform</li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-orange-400 font-semibold mb-2">Data & AI</div>
+                  <ul className="text-gray-300 space-y-1">
+                    <li>SQL Server/CosmosDB</li>
+                    <li>Azure AI Services</li>
+                    <li>Power BI</li>
+                    <li>Azure ML</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
