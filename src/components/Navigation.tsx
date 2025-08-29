@@ -1,13 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/projects' },
   { name: 'Contact', href: '/contact' },
 ];
@@ -38,55 +37,40 @@ const socialLinks = [
   },
 ];
 
-export default function Navigation() {
+export default function Navigation({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    // Check for saved theme preference or prefer-color-scheme
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
+  const textStyles = variant === 'dark' 
+    ? 'text-white hover:text-blue-400' 
+    : 'text-gray-900 hover:text-blue-600';
+  
+  const mobileButtonStyles = variant === 'dark'
+    ? 'text-white'
+    : 'text-gray-900';
+  
+  const socialStyles = variant === 'dark'
+    ? 'text-white/70 hover:text-blue-400'
+    : 'text-gray-600 hover:text-blue-600';
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Product Development Group</span>
             <Image
+              className="h-8 w-auto drop-shadow-lg"
               src="/pbw-logo-built-nav.png"
               alt="PDG Logo"
               width={120}
-              height={40}
-              className="h-8 w-auto drop-shadow-lg"
+              height={32}
             />
           </Link>
         </div>
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+            className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 ${mobileButtonStyles}`}
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -95,140 +79,77 @@ export default function Navigation() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-white/90 hover:text-white transition-colors"
-            >
+            <Link key={item.name} href={item.href} className={`text-sm font-semibold leading-6 ${textStyles} transition-colors`}>
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-6">
-          {/* Social Links */}
-          <div className="flex items-center gap-x-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 hover:text-white transition-colors p-1.5 hover:scale-110 transform duration-200"
-                title={link.name}
-              >
-                <span className="sr-only">{link.name}</span>
-                <link.icon className="h-5 w-5" aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200 hover:scale-110 transform"
-            title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            <span className="sr-only">Toggle dark mode</span>
-            {darkMode ? (
-              <SunIcon className="h-5 w-5" aria-hidden="true" />
-            ) : (
-              <MoonIcon className="h-5 w-5" aria-hidden="true" />
-            )}
-          </button>
-
-          {/* Contact Link */}
-          <a
-            href="/contact"
-            className="text-sm font-semibold leading-6 text-white/90 hover:text-white transition-colors ml-2"
-          >
-            Get in touch <span aria-hidden="true">&rarr;</span>
-          </a>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+          {socialLinks.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`${socialStyles} transition-colors`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-6 w-6" aria-hidden="true" />
+            </Link>
+          ))}
         </div>
       </nav>
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden">
-          <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black/80 backdrop-blur-xl px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+          <div className="fixed inset-0 z-10 bg-white px-6 py-6">
             <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5">
+              <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+                <span className="sr-only">Product Development Group</span>
                 <Image
+                  className="h-8 w-auto"
                   src="/pbw-logo-built-nav.png"
                   alt="PDG Logo"
                   width={120}
-                  height={40}
-                  className="h-8 w-auto drop-shadow-lg"
+                  height={32}
                 />
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-white"
+                className="-m-2.5 rounded-md p-2.5 text-gray-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-white/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <a
+            <div className="mt-6 space-y-2">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              
+              {/* Social links and dark mode toggle in mobile */}
+              <div className="mt-6 flex items-center justify-between">
+                <div className="flex gap-x-6">
+                  {socialLinks.map((item) => (
+                    <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white/90 hover:bg-white/10"
-                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-gray-400 hover:text-blue-600"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {item.name}
-                    </a>
+                      <span className="sr-only">{item.name}</span>
+                      <item.icon className="h-6 w-6" aria-hidden="true" />
+                    </Link>
                   ))}
-                </div>
-                <div className="py-6">
-                  <a
-                    href="/contact"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white/90 hover:bg-white/10 mb-4"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Get in touch
-                  </a>
-                  
-                  {/* Mobile Social Links */}
-                  <div className="flex items-center justify-center gap-x-6 mb-4">
-                    {socialLinks.map((link) => (
-                      <a
-                        key={link.name}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/70 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
-                        title={link.name}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <span className="sr-only">{link.name}</span>
-                        <link.icon className="h-6 w-6" aria-hidden="true" />
-                      </a>
-                    ))}
-                  </div>
-
-                  {/* Mobile Dark Mode Toggle */}
-                  <div className="flex justify-center">
-                    <button
-                      onClick={toggleDarkMode}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 text-sm font-medium"
-                    >
-                      {darkMode ? (
-                        <>
-                          <SunIcon className="h-5 w-5" aria-hidden="true" />
-                          Light Mode
-                        </>
-                      ) : (
-                        <>
-                          <MoonIcon className="h-5 w-5" aria-hidden="true" />
-                          Dark Mode
-                        </>
-                      )}
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>

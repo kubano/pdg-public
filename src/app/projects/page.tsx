@@ -1,229 +1,272 @@
-import { CloudIcon, CodeBracketIcon, GlobeAltIcon, ServerIcon, CircleStackIcon, CubeIcon, SparklesIcon, CheckCircleIcon, ClockIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
+
+const getStatusStyles = (status: string) => {
+  switch (status) {
+    case "Featured":
+      return "bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10";
+    case "Live":
+      return "bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20";
+    case "Completed":
+      return "bg-gray-50 text-gray-600 ring-1 ring-inset ring-gray-500/10";
+    default:
+      return "bg-yellow-50 text-yellow-800 ring-1 ring-inset ring-yellow-600/20";
+  }
+};
 
 const projects = [
   {
     id: 1,
-    title: "Azure E-Commerce Platform",
-    description: "A scalable e-commerce solution built with Azure App Service, Azure SQL Database, and Azure Blob Storage. Features real-time inventory management and secure payment processing.",
-    technologies: ["Azure App Service", "Azure SQL", "Next.js", "TypeScript"],
-    icon: GlobeAltIcon,
-    status: "Live",
-    category: "E-Commerce",
-    duration: "6 months",
-    team: "5 engineers"
+    title: "Data Acquisition Portal (D.A.P.)",
+    description: "Data Acquisition Portal (D.A.P.) is an enterprise-grade platform for meter test data acquisition and field services work order management, designed to streamline operations for utility and contractor companies.",
+    technologies: [".NET 9", "Azure App Service", "Azure SQL", "Azure Functions", "Azure Blob Storage", "Azure DevOps"],
+    category: "Enterprise Platform",
+    status: "Featured"
   },
   {
     id: 2,
-    title: "Serverless Analytics Dashboard",
-    description: "Real-time analytics dashboard using Azure Functions, Cosmos DB, and Power BI. Processes millions of events daily with automatic scaling.",
-    technologies: ["Azure Functions", "Cosmos DB", "Power BI", "React"],
-    icon: CloudIcon,
-    status: "In Development",
-    category: "Analytics",
-    duration: "4 months",
-    team: "3 engineers"
+    title: "PHA Web Presence",
+    description: "PHA Web Presence is a modern, custom web application and CMS designed specifically for Public Housing Authorities, delivering secure, accessible, and easy-to-manage Marketing Websites and Resident Portals hosted on the Azure cloud.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Functions", "Azure Blob Storage", "Azure DevOps"],
+    category: "Web Applications",
+    status: "Featured"
   },
   {
     id: 3,
-    title: "AI-Powered Content Management",
-    description: "Content management system with Azure Cognitive Services for automated content moderation, translation, and sentiment analysis.",
-    technologies: ["Azure Cognitive Services", "Azure Container Apps", "OpenAI"],
-    icon: CodeBracketIcon,
-    status: "Completed",
-    category: "AI/ML",
-    duration: "8 months",
-    team: "4 engineers"
+    title: "PHA Applications Monger",
+    description: "PHA Applications Monger is a comprehensive suite of web application solutions for Public Housing Authorities, offering modules such as Audit Portal, Monthly Property Inspections, Internal Invoice Management, and flexible a la carte options to maximize value for PHAs.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Web Jobs", "Azure Blob Storage", "Azure DevOps"],
+    category: "Enterprise Suite",
+    status: "Featured"
   },
   {
     id: 4,
-    title: "Azure Landing Zones for Enterprise Apps",
-    description: "Enterprise-grade Azure landing zones with governance, security, and compliance frameworks. Implemented multi-subscription architecture with centralized identity and network management.",
-    technologies: ["Azure Landing Zones", "Azure Policy", "Azure Blueprints", "Terraform"],
-    icon: ServerIcon,
-    status: "Live",
-    category: "Infrastructure",
-    duration: "10 months",
-    team: "6 engineers"
+    title: "Utility Compliance Manager",
+    description: "Regulatory compliance tracking and reporting system for utility companies, ensuring adherence to federal and state regulations with automated documentation and audit trails.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Functions", "Power BI"],
+    category: "Compliance Platform",
+    status: "Live"
   },
   {
     id: 5,
-    title: "Azure Static Web Apps Development",
-    description: "Modern web applications deployed using Azure Static Web Apps with integrated CI/CD pipelines. Features serverless APIs, global distribution, and automatic SSL certificates.",
-    technologies: ["Azure Static Web Apps", "GitHub Actions", "Azure Functions", "React"],
-    icon: CubeIcon,
-    status: "Completed",
-    category: "Web Development",
-    duration: "3 months",
-    team: "4 engineers"
+    title: "Property Management Portal",
+    description: "Integrated property management system for residential and commercial properties, featuring tenant management, maintenance tracking, financial reporting, and automated communications.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Service Bus", "Azure Blob Storage"],
+    category: "Property Management",
+    status: "Live"
   },
   {
     id: 6,
-    title: "Azure SQL Integrations",
-    description: "Comprehensive database solutions using Azure SQL with advanced features like elastic pools, geo-replication, and automated backup strategies for mission-critical applications.",
-    technologies: ["Azure SQL Database", "Azure SQL MI", "Azure Data Factory", "Power BI"],
-    icon: CircleStackIcon,
-    status: "Live",
-    category: "Database",
-    duration: "5 months",
-    team: "3 engineers"
+    title: "Municipal Services Dashboard",
+    description: "Citizen engagement platform for municipal governments, providing online service requests, permit applications, payment processing, and community announcements.",
+    technologies: [".NET 8", "Azure Container Apps", "Azure SQL", "Azure Functions", "Azure API Management"],
+    category: "Government Platform",
+    status: "Completed"
   },
+  {
+    id: 7,
+    title: "Healthcare Provider Network",
+    description: "Provider network management system for healthcare organizations, managing credentialing, compliance tracking, performance metrics, and provider communications.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Active Directory", "Azure Key Vault"],
+    category: "Healthcare Platform",
+    status: "Completed"
+  },
+  {
+    id: 8,
+    title: "Educational Resource Hub",
+    description: "Learning management system for educational institutions, featuring course management, student tracking, assignment submission, and progress reporting.",
+    technologies: [".NET 8", "Azure App Service", "Azure SQL", "Azure Blob Storage", "Azure CDN"],
+    category: "Education Platform",
+    status: "Completed"
+  }
 ];
-
-function getStatusConfig(status: string) {
-  if (status === 'Live') return {
-    class: 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800',
-    icon: CheckCircleIcon
-  };
-  if (status === 'In Development') return {
-    class: 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800',
-    icon: ClockIcon
-  };
-  return {
-    class: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800',
-    icon: CheckCircleIcon
-  };
-}
 
 export default function Projects() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <section className="relative pt-20 pb-16 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"></div>
-        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center rounded-full px-6 py-3 text-sm font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800 mb-8">
-              <SparklesIcon className="w-4 h-4 mr-2" />
-              Portfolio Showcase
+    <div className="min-h-screen bg-white">
+      <Navigation variant="light" />
+
+      {/* Header */}
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mb-8">
+              <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
+                Our Portfolio
+              </span>
             </div>
-            
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-6">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Projects</span>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+              Featured <span className="text-blue-600">Projects</span>
             </h1>
-            
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-8 text-gray-600 dark:text-gray-300">
-              Showcasing our expertise in building scalable, secure, and innovative solutions on Azure Cloud. 
-              From enterprise infrastructure to cutting-edge AI applications.
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Explore our portfolio of Microsoft Azure-powered solutions that have helped 
+              businesses transform their digital presence and achieve scalable, secure, 
+              and reliable cloud infrastructure.
             </p>
+            <div className="mt-8 flex items-center justify-center gap-x-4">
+              <div className="flex items-center text-sm text-gray-500">
+                <div className="h-2 w-2 bg-green-400 rounded-full mr-2"></div>
+                8 Projects Delivered
+              </div>
+              <div className="flex items-center text-sm text-gray-500">
+                <div className="h-2 w-2 bg-blue-400 rounded-full mr-2"></div>
+                100% Azure Cloud
+              </div>
+              <div className="flex items-center text-sm text-gray-500">
+                <div className="h-2 w-2 bg-purple-400 rounded-full mr-2"></div>
+                .NET Expertise
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 relative">
+      <section className="py-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => {
-              const statusConfig = getStatusConfig(project.status);
-              const StatusIcon = statusConfig.icon;
-              
-              return (
-                <div
+          <div className="mx-auto max-w-2xl lg:max-w-none">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {projects.map((project) => (
+                <article
                   key={project.id}
-                  className="group relative bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                  style={{animationDelay: `${index * 100}ms`}}
+                  className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-blue-300 hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-900/30 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 transition-colors">
-                      <project.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+                  {/* Background decoration */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-full -translate-y-16 translate-x-16 group-hover:scale-110 transition-transform duration-300"></div>
+                  
+                  {project.status === "Featured" && (
+                    <div className="absolute top-6 right-6 z-10">
+                      <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-lg">
+                        ⭐ Featured
+                      </span>
                     </div>
-                    <span className={`inline-flex items-center rounded-lg px-3 py-1 text-xs font-medium ${statusConfig.class}`}>
-                      <StatusIcon className="w-3 h-3 mr-1" />
-                      {project.status}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 rounded-full mb-3">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  )}
+                  
+                  <div className="relative z-10">
+                    {/* Category Badge */}
+                    <div className="mb-4">
+                      <span className="inline-flex items-center rounded-lg bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700">
+                        {project.category}
+                      </span>
+                    </div>
+                    
+                    {/* Project Title */}
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3">
                       {project.title}
                     </h3>
-                  </div>
-                  
-                  {/* Description */}
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Project Metrics */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-3 text-center">
-                      <ClockIcon className="w-4 h-4 mx-auto mb-1 text-gray-400" />
-                      <div className="text-sm font-semibold text-gray-900 dark:text-white">{project.duration}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">Duration</div>
+                    
+                    {/* Description */}
+                    <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                      {project.description}
+                    </p>
+                    
+                    {/* Technologies */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-900 mb-3">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="bg-gray-50 dark:bg-slate-700 rounded-lg p-3 text-center">
-                      <div className="w-4 h-4 mx-auto mb-1 text-gray-400 text-xs font-bold">👥</div>
-                      <div className="text-sm font-semibold text-gray-900 dark:text-white">{project.team}</div>
-                      <div className="text-xs text-gray-500 dark:text-gray-400">Team Size</div>
+                    
+                    {/* Status and CTA */}
+                    <div className="flex items-center justify-between">
+                      <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${getStatusStyles(project.status)}`}>
+                        {project.status}
+                      </span>
+                      
+                      <button className="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200">
+                        Learn More 
+                        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
-                  
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="inline-flex items-center rounded-md bg-gray-100 dark:bg-slate-700 px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Success Metrics Section */}
-      <section className="py-20 bg-white dark:bg-slate-800">
+      {/* Success Metrics */}
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Delivering Excellence
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mb-8">
+              <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
+                Proven Results
+              </span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Project Success <span className="text-blue-600">Metrics</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Our track record speaks for itself. Here are the metrics that matter most to our clients.
+            <p className="mt-4 text-lg text-gray-600">
+              Our track record speaks for itself with consistently delivered enterprise solutions.
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { id: 'projects', value: "50+", label: "Projects Completed" },
-              { id: 'uptime', value: "99.9%", label: "Uptime Achieved" },
-              { id: 'specializations', value: "6", label: "Azure Specializations" },
-              { id: 'satisfaction', value: "100%", label: "Client Satisfaction" }
-            ].map((metric) => (
-              <div key={metric.id} className="text-center group">
-                <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {metric.value}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">{metric.label}</div>
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              
+              <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl"></div>
+                <dt className="flex items-center text-lg font-bold text-gray-900 mb-3">
+                  <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-green-100">
+                    <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  99.9% Uptime Achieved
+                </dt>
+                <dd className="text-base leading-7 text-gray-600">
+                  Our Azure-hosted applications consistently deliver enterprise-grade reliability with minimal downtime.
+                </dd>
               </div>
-            ))}
+
+              <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-t-2xl"></div>
+                <dt className="flex items-center text-lg font-bold text-gray-900 mb-3">
+                  <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
+                    <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                    </svg>
+                  </div>
+                  50% Cost Reduction
+                </dt>
+                <dd className="text-base leading-7 text-gray-600">
+                  Average infrastructure cost savings achieved through Azure cloud optimization and modern architecture.
+                </dd>
+              </div>
+
+              <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-t-2xl"></div>
+                <dt className="flex items-center text-lg font-bold text-gray-900 mb-3">
+                  <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
+                    <svg className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+                  </div>
+                  3x Performance Improvement
+                </dt>
+                <dd className="text-base leading-7 text-gray-600">
+                  Average performance gains from legacy system modernization and Azure cloud migration.
+                </dd>
+              </div>
+
+            </dl>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600 relative">
+      <section className="py-20 bg-blue-600">
         <div className="relative mx-auto max-w-4xl px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Build Something Amazing?
