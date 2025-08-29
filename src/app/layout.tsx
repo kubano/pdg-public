@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Product Development Group - Azure Cloud Engineers",
   description: "A team of highly skilled software engineers crafting beautiful applications for the Azure Cloud using modern technologies like Next.js, TypeScript, and Tailwind CSS.",
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

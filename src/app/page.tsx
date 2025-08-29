@@ -17,18 +17,18 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-            {/* Hero Section with Background Image */}
+      {/* Hero Section with Background Image */}
       <section className="relative min-h-screen pt-20 flex items-center">
-        {/* Background Image with Light Overlay */}
+        {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed opacity-60 dark:opacity-40"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: 'url("/hero-bg.jpg")',
           }}
         ></div>
         
-        {/* Very Light Overlay for Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/20 to-white/30 dark:from-slate-900/60 dark:via-slate-800/40 dark:to-slate-900/60"></div>
+        {/* Subtle Dark Overlay for Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30 dark:from-black/40 dark:via-black/20 dark:to-black/50"></div>
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="text-center">
             {/* Badge */}
