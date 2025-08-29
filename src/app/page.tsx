@@ -92,7 +92,7 @@ export default function Home() {
               robust, scalable, and secure digital platforms tailored to their unique needs.
             </p>
             
-            {/* Extended tech-focused content */}
+            {/* Extended tech-focused content 500*/}
             <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6">
                 <div className="text-2xl font-bold text-blue-600 mb-2">⚡</div>
