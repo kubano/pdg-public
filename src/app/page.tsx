@@ -19,23 +19,23 @@ export default function Home() {
         </div>
         
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-32 sm:pb-40 lg:pb-48">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-blue-400 mb-4 sm:text-3xl">
+            <h1 className="text-xl font-bold tracking-tight text-blue-400 mb-3 sm:text-2xl lg:text-3xl">
               Product Development Group
             </h1>
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-6xl">
               Building the Future of{' '}
               <span className="text-blue-400">Cloud Applications</span>
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-200">
+            <p className="mt-4 text-base leading-7 text-gray-200 sm:mt-6 sm:text-lg sm:leading-8">
               We craft exceptional enterprise solutions through modern Cloud Technologies, 
               Azure services, and cutting-edge development practices that scale with your business.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row sm:gap-6">
               <Link
                 href="/projects"
-                className="rounded-md bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="w-full rounded-md bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors sm:w-auto"
               >
                 View Our Work
               </Link>
@@ -50,26 +50,26 @@ export default function Home() {
         </div>
         
         {/* Stats */}
-        <div className="absolute bottom-20 left-0 right-0 z-10">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="absolute bottom-4 left-0 right-0 z-10 sm:bottom-8 lg:bottom-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl lg:max-w-none">
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:gap-8">
                 <div className="text-center group">
-                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">50+</div>
-                    <div className="text-sm text-gray-200 font-medium">Projects Delivered</div>
+                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 sm:p-6">
+                    <div className="text-2xl font-bold text-white mb-1 bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent sm:text-4xl sm:mb-2">50+</div>
+                    <div className="text-xs text-gray-200 font-medium sm:text-sm">Projects Delivered</div>
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent">25+</div>
-                    <div className="text-sm text-gray-200 font-medium">Happy Clients</div>
+                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 sm:p-6">
+                    <div className="text-2xl font-bold text-white mb-1 bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent sm:text-4xl sm:mb-2">25+</div>
+                    <div className="text-xs text-gray-200 font-medium sm:text-sm">Happy Clients</div>
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                    <div className="text-4xl font-bold text-white mb-2 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">15+</div>
-                    <div className="text-sm text-gray-200 font-medium">Years Experience Combined</div>
+                  <div className="backdrop-blur-sm bg-white/5 rounded-xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 sm:p-6">
+                    <div className="text-2xl font-bold text-white mb-1 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent sm:text-4xl sm:mb-2">15+</div>
+                    <div className="text-xs text-gray-200 font-medium sm:text-sm">Years Experience Combined</div>
                   </div>
                 </div>
               </div>
@@ -168,73 +168,138 @@ export default function Home() {
       </section>
 
       {/* Our Core Values */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Our Core Values
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-8">
+              <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-800">
+                💎 Our Philosophy
+              </span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              Core Values That Drive{' '}
+              <span className="text-blue-600">Innovation</span>
             </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              We don&apos;t just build software – we architect digital experiences that transform businesses 
+              and empower teams with cutting-edge technology solutions.
+            </p>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+          
+          <div className="mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               
-              <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <div className="group relative flex">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col w-full">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                     </svg>
                   </div>
-                  Technology Excellence
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">We leverage the latest .NET technologies and Azure services following Microsoft best practices and design patterns.</p>
-                </dd>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Technology Excellence</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">
+                    Leveraging cutting-edge .NET 8+, Azure Cloud services, and modern DevOps practices 
+                    to deliver high-performance, scalable solutions.
+                  </p>
+                  <div className="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                    <span>Latest Tech Stack</span>
+                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <div className="group relative flex">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col w-full">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
                     </svg>
                   </div>
-                  Cloud Innovation
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">We stay ahead of Azure Cloud updates and new services to provide cutting-edge cloud solutions that give you a competitive edge.</p>
-                </dd>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Cloud Innovation</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">
+                    Cloud-native architecture with microservices, containerization, and serverless 
+                    functions that automatically scale with your business growth.
+                  </p>
+                  <div className="mt-6 flex items-center text-sm text-green-600 font-medium">
+                    <span>Azure Certified</span>
+                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <div className="group relative flex">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col w-full">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-purple-500 to-pink-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15l-.75 18H5.25L4.5 3z" />
                     </svg>
                   </div>
-                  Enterprise Focus
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">We understand enterprise needs and deliver scalable, maintainable solutions that grow with your business.</p>
-                </dd>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Enterprise Focus</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">
+                    Enterprise-grade solutions with robust security, compliance standards, 
+                    and scalable architecture designed for mission-critical applications.
+                  </p>
+                  <div className="mt-6 flex items-center text-sm text-purple-600 font-medium">
+                    <span>Enterprise Ready</span>
+                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                    <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <div className="group relative flex">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col w-full">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-red-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                     </svg>
                   </div>
-                  Azure Security
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">We implement Azure security best practices and compliance standards to protect your data and applications.</p>
-                </dd>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Security First</h3>
+                  <p className="text-gray-600 leading-relaxed flex-grow">
+                    Zero-trust architecture, OAuth 2.0, Azure AD integration, and comprehensive 
+                    security measures that protect your data and ensure compliance.
+                  </p>
+                  <div className="mt-6 flex items-center text-sm text-orange-600 font-medium">
+                    <span>Security Focused</span>
+                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
-            </dl>
+            </div>
+            
+            {/* Bottom CTA */}
+            <div className="mt-16 text-center">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-3xl mx-auto">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Ready to Experience the Difference?
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Let&apos;s discuss how our core values translate into exceptional results for your next project.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300"
+                  >
+                    Start Your Project
+                  </Link>
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-900 hover:bg-gray-50 transition-all duration-300"
+                  >
+                    View Case Studies
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
