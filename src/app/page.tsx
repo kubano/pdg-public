@@ -43,7 +43,7 @@ export default function Home() {
                 href="/contact"
                 className="text-base font-semibold leading-6 text-white hover:text-gray-200 transition-colors"
               >
-                Start a Project <span aria-hidden="true">→</span>
+                Talk to Us &amp; Start a Project <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
